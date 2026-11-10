@@ -2,7 +2,7 @@ import joplin from 'api';
 import { ToolbarButtonLocation, MenuItemLocation } from 'api/types';
 
 const pastelColors = [
-  { key: 'yellow', label: 'Jaune pastel', color: '#FFF2A8' },
+  { key: 'yellow', label: 'Jaune pastel', color: '#FFFF00' },
   { key: 'green', label: 'Vert pastel', color: '#C9EED2' },
   { key: 'pink', label: 'Rose pastel', color: '#F8CBDD' },
   { key: 'blue', label: 'Bleu pastel', color: '#CBE8FA' },
@@ -27,7 +27,7 @@ async function clearHighlight() {
 joplin.plugins.register({
   onStart: async () => {
     console.info('[Pastel Highlighter 0.4.5] démarrage');
-    let currentColor = '#C9EED2';
+    let currentColor = '#FFFF00';
     // Un dialogue unique : Joplin ne permet pas de recréer le même identifiant à chaque clic.
     const dialog = await joplin.views.dialogs.create('quenaPastelColorDialog');
     await joplin.commands.register({
@@ -46,7 +46,7 @@ joplin.plugins.register({
         try {
         const rows = pastelColors.map((c, i) =>
           `<label style="display:flex;align-items:center;gap:10px;margin:9px 0;cursor:pointer">` +
-          `<input type="radio" name="pastelColor" value="${c.key}" ${i === 1 ? 'checked' : ''}>` +
+          `<input type="radio" name="pastelColor" value="${c.key}" ${i === 0 ? 'checked' : ''}>` +
           `<span style="width:28px;height:20px;border:1px solid #999;border-radius:4px;background:${c.color}"></span>` +
           `${c.label}</label>`
         ).join('');
